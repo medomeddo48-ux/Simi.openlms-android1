@@ -1,0 +1,6 @@
+{
+  "appId": "com.yourcompany.openlms",
+  "appName": "OpenLMS",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

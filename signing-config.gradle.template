@@ -1,0 +1,19 @@
+// add into android/app/build.gradle inside android { } block
+def keystorePropsFile = rootProject.file("release-keystore.properties")
+if (keystorePropsFile.exists()) {
+    def keystoreProps = new Properties()
+    keystoreProps.load(new FileInputStream(keystorePropsFile))
+    signingConfigs {
+        release {
+            storeFile file(keystoreProps['storeFile'])
+            storePassword keystoreProps['storePassword']
+            keyAlias keystoreProps['keyAlias']
+            keyPassword keystoreProps['keyPassword']
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+}
